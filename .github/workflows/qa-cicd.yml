@@ -79,7 +79,7 @@ jobs:
             with:
               python-version: "3.11"
           - name: Install Checkov
-            run: pip Install checkov
+            run: pip install checkov
           - name: Run checkov Kubernetes scan
             run: |
              checkov -d . \
