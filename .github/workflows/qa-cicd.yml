@@ -138,14 +138,14 @@ jobs:
           trivy --version
           which trivy
 
-      - name: Run Trivy scan on client(json)
+      - name: Run Trivy FS scan on client(json)
         run: |
           trivy fs ./client \
           --format json \
           --output client-trivy-fs-report.json \
           --severity HIGH,CRITICAL \
           --ignore-unfixed \
-          --exit code 0
+          --exit-code 0
 
 
       - name: Run Trivy scan on client(Table)
@@ -225,7 +225,7 @@ jobs:
            if-no-files-found: warn
 
 
-           
+
 
 
 
