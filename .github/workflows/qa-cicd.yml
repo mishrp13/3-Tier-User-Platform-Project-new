@@ -425,7 +425,7 @@ jobs:
         with:
           load: true
           push: false
-          tags:
+          tags: |
             mishrp/node-js-app:${{ github.sha }}
             mishrp/node-js-app:latest
 
