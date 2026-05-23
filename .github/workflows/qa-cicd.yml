@@ -451,7 +451,7 @@ jobs:
          --severity HIGH,CRITICAL \
          --ignore-unfixed \
          --exit-code 0
-
+ 
 
       - name: Run Trivy image scan(Table)
         run : |
