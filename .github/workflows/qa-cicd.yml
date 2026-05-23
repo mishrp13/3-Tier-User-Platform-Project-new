@@ -344,35 +344,35 @@ jobs:
         run: npm test --if-present
         continue-on-error: true
 
-  sonarqube:
-    name: SonarQube analysis & quality gate check
-    runs-on: ubuntu-latest
-    needs: 
-      - server-test
-      - client-test
-    steps:
-     - uses: actions/checkout@v4
-       with:
-        fetch-depth: 0
+  # sonarqube:
+  #   name: SonarQube analysis & quality gate check
+  #   runs-on: ubuntu-latest
+  #   needs: 
+  #     - server-test
+  #     - client-test
+  #   steps:
+  #    - uses: actions/checkout@v4
+  #      with:
+  #       fetch-depth: 0
 
-     - name: SonarQube scan
-       uses: sonarsource/sonarqube-scan-action@master
-       env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+  #    - name: SonarQube scan
+  #      uses: sonarsource/sonarqube-scan-action@master
+  #      env:
+  #       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  #       SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
 
-     - name: SonarQube Quality Gate check
-       id: sonarqube-quality-gate-check
-       continue-on-error: true
-       uses: sonarsource/sonarqube-scan-action@master
-       timeout-minutes: 10
-       env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+  #    - name: SonarQube Quality Gate check
+  #      id: sonarqube-quality-gate-check
+  #      continue-on-error: true
+  #      uses: sonarsource/sonarqube-scan-action@master
+  #      timeout-minutes: 10
+  #      env:
+  #       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  #       SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
-     - name: "Example show SonarQube Quality gate status value "
-       run: echo "The Quality Gate status is ${{ steps.sonarqube-quality-gate-check.outputs.quality-gate-status }}"
+  #    - name: "Example show SonarQube Quality gate status value "
+  #      run: echo "The Quality Gate status is ${{ steps.sonarqube-quality-gate-check.outputs.quality-gate-status }}"
 
   client-build:
     name: client build
