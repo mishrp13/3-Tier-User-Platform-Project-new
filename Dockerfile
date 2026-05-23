@@ -16,7 +16,7 @@ RUN mkdir -p ./public  && cp -R /usr/src/app/client/public/* ./public/
 
 ENV MODE_ENV=production
 
-RUN addgroup -S appgroup && appuser -S appuser -G appgroup
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 RUN chown -R appuser:appgroup /usr/src/app
 
 USER appuser
