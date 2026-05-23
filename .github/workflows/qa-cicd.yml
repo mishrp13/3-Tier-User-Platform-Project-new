@@ -447,10 +447,20 @@ jobs:
           --ignore-unfixed \
           --exit-code 0 > image-trivy-report.txt
 
+      - name: Run Trivy image scan(json)
+        run: |
+         trivy image mishrp/node-js-app:${{ github.sha }} \
+         --format json \
+         --output image-trivy-report.json \
+         --severity HIGH,CRITICAL \
+         --ignore-unfixed \
+         --exit-code 0
+
+
       - name: Run Trivy image scan(Table)
         run : |
           trivy image mishrp/node-js-app:${{ github.sha }} \
-          --format json \
+          --format table \
           --severity HIGH,CRITICAL \
           --ignore-unfixed \
           --exit-code 0 > image-trivy-report.txt
