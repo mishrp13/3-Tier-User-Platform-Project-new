@@ -441,7 +441,7 @@ jobs:
       - name: Verify Trivy Installation
         run: |
           trivy --version
-          which trivy
+          which trivy 
 
       - name: Run Trivy image scan(json)
         run: |
@@ -501,6 +501,8 @@ jobs:
           tags: |
            mishrp/node-js-app:${{ github.sha }}
            mishrp/node-js-app:latest
+
+
             
 
         
